@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Sorry Betu ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(160deg, #1a0b2e 0%, #2d1b4e 40%, #4a1942 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            color: #f0e6ff;
+            position: relative;
+        }
+
+        /* Floating hearts */
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            opacity: 0.35;
+            animation: float 14s linear infinite;
+            filter: drop-shadow(0 0 6px rgba(255, 120, 180, 0.4));
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(110vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 0.4;
+            }
+
+            85% {
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: translateY(-15vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            background: rgba(30, 15, 50, 0.75);
+            backdrop-filter: blur(16px);
+            border-radius: 28px;
+            padding: 36px 28px;
+            max-width: 440px;
+            width: 92%;
+            text-align: center;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(200, 80, 160, 0.15);
+            border: 1px solid rgba(255, 150, 200, 0.2);
+        }
+
+        .emoji {
+            font-size: 58px;
+            margin-bottom: 12px;
+            animation: pulse 2.2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.12);
+            }
+        }
+
+        h1 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            background: linear-gradient(90deg, #ff8ec4, #e0aaff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #c9a0d8;
+            margin-bottom: 24px;
+        }
+
+        /* Typewriter message box */
+        .message-box {
+            background: rgba(50, 25, 70, 0.6);
+            border-radius: 18px;
+            padding: 22px 20px;
+            margin-bottom: 26px;
+            border: 1px solid rgba(255, 140, 190, 0.18);
+            text-align: left;
+            min-height: 140px;
+            line-height: 1.65;
+            font-size: 15px;
+            color: #f5e9ff;
+        }
+
+        .message-box .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.1em;
+            background: #ff8ec4;
+            margin-left: 2px;
+            vertical-align: middle;
+            animation: blink 0.8s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* Forgiveness Meter */
+        .meter-section {
+            margin-bottom: 26px;
+        }
+
+        .meter-label {
+            font-size: 13px;
+            color: #d4a5e8;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .meter-track {
+            height: 14px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .meter-fill {
+            height: 100%;
+            width: 12%;
+            background: linear-gradient(90deg, #ff6b9d, #c44569, #ff8ec4);
+            border-radius: 20px;
+            transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 0 12px rgba(255, 107, 157, 0.6);
+        }
+
+        .meter-percent {
+            font-size: 12px;
+            color: #ffb3d1;
+            margin-top: 6px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            color: white;
+            border: none;
+            padding: 13px 30px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 22px rgba(196, 69, 105, 0.4);
+            margin: 6px 4px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(196, 69, 105, 0.55);
+        }
+
+        .btn:disabled {
+            opacity: 0.65;
+            cursor: default;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1.5px solid rgba(255, 150, 200, 0.4);
+            color: #ffb3d1;
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 150, 200, 0.1);
+            box-shadow: none;
+        }
+
+        /* Music player */
+        .music-box {
+            margin-top: 22px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255, 150, 200, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-size: 13px;
+            color: #c9a0d8;
+        }
+
+        .music-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Surprise final section */
+        .surprise {
+            display: none;
+            margin-top: 20px;
+            animation: fadeInUp 0.9s ease;
+        }
+
+        .surprise.show {
+            display: block;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .big-heart {
+            font-size: 72px;
+            margin: 8px 0;
+            animation: heartbeat 1.3s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            25% {
+                transform: scale(1.18);
+            }
+
+            50% {
+                transform: scale(1);
+            }
+
+            75% {
+                transform: scale(1.1);
+            }
+        }
+
+        .final-text {
+            font-size: 17px;
+            font-weight: 600;
+            color: #ffb3d1;
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+
+        .footer {
+            margin-top: 26px;
+            font-size: 12px;
+            color: #9b7aad;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 28px 18px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            .emoji {
+                font-size: 48px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hearts" id="hearts"></div>
+
+    <div class="container">
+        <div class="emoji">🥺💔</div>
+        <h1>I'm Really Sorry Betu...</h1>
+        <p class="subtitle">kal raat ke liye... ❤️ I know I messed up. I hurt you, and that was the last thing I ever
+            wanted to do. You mean so much to me. Your smile, your laugh, the way you make everything better — I miss
+        all of it.I'm truly sorry. Please forgive me. ❤️</p>
+    </div>
+    <!-- Typewriter message -->
+    <div class="message-box">
+        <span id="typewriter"></span><span class="cursor" id="cursor"></span>
+    </div>
+
+    <!-- Forgiveness Meter -->
+    <div class="meter-section">
+        <div class="meter-label">
+            <span>Forgiveness Meter</span>
+            <span id="meterPercent">12%</span>
+        </div>
+        <div class="meter-track">
+            <div class="meter-fill" id="meterFill"></div>
+        </div>
+        <div class="meter-percent">Thoda sa hope hai... please fill it 💕</div>
+    </div>
+
+    <button class="btn" id="forgiveBtn" onclick="forgiveMe()">Will you forgive me? 💕</button>
+    <button class="btn btn-secondary" id="moreBtn" onclick="addMore()" style="display:none;">Thoda aur hope do
+        🥺</button>
+
+    <!-- Final surprise -->
+    <div class="surprise" id="surprise">
+        <div class="big-heart">💖</div>
+        <p class="final-text">
+            Thank you Betu...<br>
+            Main wapas aisa kabhi nahi bolunga.<br>
+            I really love you.
+        </p>
+    </div>
+
+    <!-- Music -->
+    <div class="music-box">
+        <button class="music-btn" id="musicBtn" onclick="toggleMusic()">▶</button>
+        <span id="musicText">Play soft song</span>
+    </div>
+
+    <div class="footer">Made with ❤️ only for you Betu</div>
+    </div>
+
+    <!-- Soft romantic music (royalty-free style piano) -->
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // ========== Typewriter Effect ==========
+        const fullMessage = `Hey Betu,\n\nKal raat ke liye really sorry...\nMujhe waisa nahi bolna chahiye tha.\n\nSochta hoon kitna hurt hua hoga tujhe...\nPhir bhi main bol deta hoon —\n\nReally sorry Betu. ❤️`;
+
+        const typewriterEl = document.getElementById('typewriter');
+        const cursorEl = document.getElementById('cursor');
+        let i = 0;
+
+        function typeWriter() {
+            if (i < fullMessage.length) {
+                if (fullMessage.charAt(i) === '\n') {
+                    typewriterEl.innerHTML += '<br>';
+                } else {
+                    typewriterEl.innerHTML += fullMessage.charAt(i);
+                }
+                i++;
+                setTimeout(typeWriter, 38); // typing speed
+            } else {
+                cursorEl.style.display = 'none';
+            }
+        }
+
+        // Start typing after a short delay
+        setTimeout(typeWriter, 600);
+
+        // ========== Floating Hearts ==========
+        function createHearts() {
+            const container = document.getElementById('hearts');
+            const symbols = ['❤️', '💕', '💗', '💖', '💘', '🌸', '✨'];
+            for (let i = 0; i < 22; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = (12 + Math.random() * 16) + 'px';
+                heart.style.animationDuration = (9 + Math.random() * 12) + 's';
+                heart.style.animationDelay = Math.random() * 10 + 's';
+                container.appendChild(heart);
+            }
+        }
+        createHearts();
+
+        // ========== Forgiveness Meter ==========
+        let currentPercent = 12;
+
+        function updateMeter(percent) {
+            currentPercent = Math.min(percent, 100);
+            document.getElementById('meterFill').style.width = currentPercent + '%';
+            document.getElementById('meterPercent').textContent = currentPercent + '%';
+        }
+
+        function forgiveMe() {
+            // Jump to high percentage
+            updateMeter(78);
+            document.getElementById('forgiveBtn').textContent = "Almost there... 🥺";
+            document.getElementById('forgiveBtn').disabled = true;
+            document.getElementById('moreBtn').style.display = 'inline-block';
+        }
+
+        function addMore() {
+            updateMeter(100);
+            document.getElementById('moreBtn').style.display = 'none';
+            document.getElementById('forgiveBtn').textContent = "Forgiven ❤️";
+
+            // Show final surprise
+            setTimeout(() => {
+                document.getElementById('surprise').classList.add('show');
+            }, 400);
+        }
+
+        // ========== Music ==========
+        const music = document.getElementById('bgMusic');
+        const musicBtn = document.getElementById('musicBtn');
+        const musicText = document.getElementById('musicText');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                musicBtn.textContent = '▶';
+                musicText.textContent = 'Play soft song';
+            } else {
+                music.volume = 0.35; // soft volume
+                music.play().catch(() => {
+                    alert("Browser blocked autoplay. Please click Play again.");
+                });
+                musicBtn.textContent = '❚❚';
+                musicText.textContent = 'Music playing...';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // Try to start music on first user interaction (better compatibility)
+        document.body.addEventListener('click', function startOnce() {
+            if (!isPlaying) {
+                // optional: auto start after first click if you want
+            }
+            document.body.removeEventListener('click', startOnce);
+        }, { once: true });
+    </script>
+</body>
+
+</html>
